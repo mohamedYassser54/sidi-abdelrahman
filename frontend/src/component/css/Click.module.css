@@ -1,0 +1,135 @@
+.allclick{
+  /* background-image: url(../image/office-2609180.jpg); */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background: #f1f1f1;
+}
+.arddds {
+  width: 80%;
+    position: relative;
+    /* backdrop-filter: blur(8px); */
+    border-radius: 30px;
+    background: #ffff;
+    /* background-image: url(../image/15.jpg); */
+    background-position:right;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+  }
+  .flexx{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+  }
+ .flexx input{
+  width: 90%;
+  margin: 10px;
+  outline: none;
+  border-radius: 20px;
+  text-align: center;
+ }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left:20px;
+    margin: 10px;
+  }
+  
+  .dropbtn {
+    width: 200px;
+    height: 100px;
+    background-color: rgba(27, 128, 244, 0.697);
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    border-radius: 20px;
+
+  }
+  
+  .dropdownContent {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    max-height: 200px; 
+  overflow-y: auto; 
+  }
+  
+  .dropdownContent div {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .dropdownContent div:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .dropdown:hover .dropdownContent {
+    display: block;
+  }
+  
+  .dropdown:hover .dropbtn {
+    background-color: rgba(27, 128, 244, 0.697);
+
+  }
+  .btn{
+    background-color: rgba(27, 128, 244, 0.697);
+    /* width: 30%; */
+    margin: 10px;
+    border: none;
+    color: #ffff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .textareaa{
+    /* width: 50%; */
+     height: 150px;
+      padding: 10px;
+       font-Size: 16px;
+        border-radius: 5px;
+        /* margin-left: 10px; */
+        
+  }
+  @media(max-width:991px){
+   .arddds{
+    width: 90%;
+    align-items: center;
+   }
+    .textareaa{
+      width: 90%;
+    }
+   .dropbtn{
+    width: 150px;
+    height: 60px;
+    font-size: 15px;
+   }
+   .btn{
+    width: 80%;
+   }
+  }
+  @media(max-width:342px){
+    .dropbtn{
+    width: 80px;
+    font-size: 11px;
+
+    }
+  }

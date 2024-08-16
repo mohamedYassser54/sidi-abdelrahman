@@ -1,0 +1,113 @@
+.Department{
+    color: #ffff;
+    overflow: hidden;
+}
+.Department img{
+   
+}
+.imgg{
+    /* background-image: url(../image/5.jpg); */
+    width: 100%;
+    height: 50vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.imgg h1,
+.imgg1 h1,
+.imgg2 h1,
+.imgg3 h1,
+.imgg4 h1,
+.imgg5 h1,
+.imgg6 h1,
+.imgg7 h1{
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(6px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 20px #fff;
+    transition: 0.3s;
+}
+.imgg h1:hover,
+.imgg1 h1:hover,
+.imgg2 h1:hover,
+.imgg3 h1:hover,
+.imgg4 h1:hover,
+.imgg5 h1:hover
+.imgg6 h1:hover,
+.imgg7 h1:hover{
+   
+    backdrop-filter: blur(3px);
+    
+
+}
+/* .imgg1{
+    background-image: url(../image/8.jpg);
+    width: 100%;
+    height: 50vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+ 
+}
+.imgg2{
+    background-image: url(../image/9.jpg);
+    width: 100%;
+    height: 50vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+   
+}
+.imgg3{
+    background-image: url(../image/10.jpg);
+    width: 100%;
+    height: 50vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+   
+}
+.imgg4{
+    background-image: url(../image/11.jpg);
+    width: 100%;
+    height: 50vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+   
+}
+.imgg5{
+    background-image: url(../image/12.jpg);
+    width: 100%;
+    height: 50vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+   
+}
+.imgg6{
+    background-image: url(../image/13.jpg);
+    width: 100%;
+    height: 50vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+   
+}
+.imgg7{
+    background-image: url(../image/14.jpg);
+    width: 100%;
+    height: 50vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+   
+} */

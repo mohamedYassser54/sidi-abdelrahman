@@ -1,0 +1,133 @@
+/* iframe{
+    width: 100%;
+    height:100vh;
+} */
+.bodyy{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 150px;
+}
+/* page */
+.bodyyy{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+/*/ page */
+
+.bodyy p{
+    font-family: Arial, sans-serif;
+    max-width: 730px; 
+    /* margin: 0 auto;  */
+    line-height: 1.3; 
+    text-align: justify; 
+    padding:5px; 
+  color: #fff;
+}
+.bodybac{
+    /* background-image: url(../image/imagets/home.jpg); */
+    width: 100%;
+    height:100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top: 10px;
+}
+.Imagehome{
+    width: 100%;
+    height: 100vh;
+}
+.tex{
+    color: #000;
+    position: relative;
+    top: 300px;
+}
+/* image home  */
+.imageName{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+.imageHome{
+    cursor: pointer;
+    transition: 0.3s;
+}
+.imageHome img{
+    width:100px;
+    height: 100px;
+    border-radius: 50%;
+   
+    
+}
+.imageHome:hover{
+    transform: scale(1.2);
+}
+.textimg{
+    color: #fff;
+}
+.NavLink{
+  text-decoration: none;
+}
+
+.videoBackground{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+.testv{
+    width: 43%;
+    position: absolute;
+    margin-bottom: 15px;
+}
+
+.Tv{
+    display: flex;
+    width: 100%;
+    height: 130vh;
+    align-items: center;
+    justify-content: center;
+}
+.Tv .buttonn{
+    position: absolute;  
+    width: 43%;
+    background: transparent;
+    border: none;
+}
+.Tv .buttonn img{
+    width: 30px;
+}
+.Tv img{
+    width: 50%;
+}
+@media(max-width:836px){
+    .bodyy{
+       flex-direction: column;
+    }
+    .bodyy img{
+        margin-top: 100px;
+    }
+}
+@media(max-width:601px){
+    .testv{
+        width: 78%;
+        position: absolute;
+        margin-bottom: 10px;
+    }
+    .Tv{
+    height: 100vh;
+
+    }
+    .Tv img{
+        width: 90%;
+
+    }
+}

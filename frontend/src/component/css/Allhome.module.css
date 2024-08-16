@@ -1,0 +1,83 @@
+.home{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:200px;
+
+}
+.flex{
+    width: 100%;
+    /* height:80vh; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.Company,
+.user,
+.employees{
+    width: 85%;
+    height: 350px;
+    margin-top: 10px;
+    border-radius: 20px;
+}
+.user{
+    /* background-image: url(../image/77.png); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.Company{
+    /* background-image: url(../image/66.png); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+.employees{
+    /* background-image: url(../image/88.jpg); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+
+.Company .btn,
+.user .btn,
+.employees .btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    backdrop-filter:  blur(3px);
+    border-radius: 20px;
+
+}
+.Company .navLink,
+.user .navLink,
+.employees .navLink{
+    width: 50%;
+    height: 50px;
+    background: none;
+    border-radius: 10px;
+    border: 1px solid #fff;
+    transition: 0.3s;
+    box-shadow:  0 0 10px #fff inset ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Company .navLink:hover,
+.user .navLink:hover,
+.employees .navLink:hover{
+    transform: scale(1.1);
+}
+.navLink{
+    text-decoration: none;
+    color:#fff;
+    
+}

@@ -1,0 +1,16 @@
+/* .footerr{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+   
+} */
+.icons{
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+.icon{
+    margin: 10px;
+}
