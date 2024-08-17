@@ -52,7 +52,7 @@ const changeFr = () =>{
         <Navbar.Toggle aria-controls="navbarScroll " className="Toggle"  />
         <Navbar.Collapse id="navbarScroll ">
           <Nav className="mr-auto  mx-auto my-lg-0 " style={{ maxHeight: '100px'}} navbarScroll>
-            <NavLink to="/home" className="NavLink"  >{t("الرئيسية")}</NavLink>
+            <NavLink to="/" className="NavLink"  >{t("الرئيسية")}</NavLink>
            
           
             <NavLink to="/Reports" className="NavLink">

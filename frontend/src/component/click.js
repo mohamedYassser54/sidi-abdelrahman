@@ -38,14 +38,14 @@ function Click() {
 
   const navigate = useNavigate();
 
-     useEffect(() => {
+  //    useEffect(() => {
   
-    const login = Cookies.get('login');
-    if (login !== 'true') {
+  //   const login = Cookies.get('login');
+  //   if (login !== 'true') {
       
-      navigate('/signin');
-    }
-  }, [navigate]);
+  //     navigate('/signin');
+  //   }
+  // }, [navigate]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -63,7 +63,7 @@ function Click() {
           date: new Date().toISOString()
         };
     
-        fetch('http://localhost:8083/test', {
+        fetch('https://sidi-abdelrahman-ftkn.vercel.app/test', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
