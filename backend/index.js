@@ -5,6 +5,8 @@ const cookieParser = require('cookie-parser');
 const bodyParser= require('body-parser');
 const bcrypt = require('bcrypt');
 const { format } = require('date-fns');
+require('dotenv').config();
+
 
 const app = express();
 app.use(cors());
