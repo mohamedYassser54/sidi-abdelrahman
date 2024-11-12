@@ -66,7 +66,7 @@ const MyVerticallyCenteredModal = ({ show, onHide, doctorData }) => {
               color: rgb(0, 0, 0),
             });
             yPosition -= 30;
-            drawText(`التقرير: ${item.textarea}`, 18);
+            drawText(`التقرير: ${item.text}`, 18);
         });
 
         const pdfBytes = await pdfDoc.save();
