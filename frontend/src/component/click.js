@@ -63,7 +63,7 @@ function Click() {
           date: new Date().toISOString()
         };
     
-        fetch('https://sidi-abdelrahman-ftkn.vercel.app/test', {
+        fetch('https://elfarida-server.vercel.app/test', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

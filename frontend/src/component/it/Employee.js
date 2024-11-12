@@ -120,7 +120,7 @@ function Employee() {
   const onHide = () => setModalShow(false);
 
   useEffect(() => {
-    fetch('https://sidi-abdelrahman-ftkn.vercel.app/services')
+    fetch('https://elfarida-server.vercel.app/services')
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
@@ -158,7 +158,7 @@ function Employee() {
 
   const handleRemove = async (id) => {
     try {
-      await axios.delete(`https://technical-support-seven.vercel.app/removetest/${id}`);
+      await axios.delete(`https://elfarida-server.vercel.app/removetest/${id}`);
       window.location.reload();
     } catch (err) {
       console.error("Error deleting record:", err);
@@ -191,12 +191,12 @@ function Employee() {
     <>
       <div className={styleess.nav}>
         {/* <img src={img} alt="Icon" /> */}
-        <h5>sidi-abdelrahman</h5>
+        <h5>El farida</h5>
       </div>
       <div className={styleess.bodyenplo}>
         <div className={styleess.tablee}>
           <h1 className={styleess.h1}>
-          sidi-abdelrahman      
+          El farida
                 <h1> Mohamed</h1>
           </h1>
           <table>
@@ -207,7 +207,7 @@ function Employee() {
                 <th>الفلوس</th>
                 <th>التقرير</th>
                 <th>التاريخ</th>
-                <th>اخفاء</th>
+                {/* <th>اخفاء</th> */}
               </tr>
             </thead>
             
@@ -238,7 +238,7 @@ function Employee() {
                 </td>
                 <td>{formatDate(item.date)}</td>
                 <td>
-                  <Button onClick={() => handleHideReport(item.id)}>Hide</Button>
+                  {/* <Button onClick={() => handleHideReport(item.id)}>Hide</Button> */}
                 </td>
               </tr>
             )
