@@ -5,7 +5,7 @@ import {NavLink,useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import Cookies from 'js-cookie';
 import './css/Navbars.css';
-// import Img from './image/icon2.png'
+import Img from './image/icon.png'
 // import Img1 from './image/earth.png'
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
@@ -42,7 +42,7 @@ const changeFr = () =>{
         <Navbar.Brand  className='icon' >
         <img
               alt=""
-              // src={Img}
+              src={Img}
               width="50"
               height="50"
               className="d-inline-block align-top br-5"
@@ -56,15 +56,21 @@ const changeFr = () =>{
            
           
             <NavLink to="/Reports" className="NavLink">
-            {t("التقرير")}
+            {t("رفع  التقرير ")}
             </NavLink>
+            <NavLink to="/it" className="NavLink">
+            {t("التقارير")}
+            </NavLink>
+            {/* <NavLink to="/Client" className="NavLink">
+            {t("بيانات العميل ")}
+            </NavLink> */}
             {/* <NavLink to="/Department" className="NavLink">
             {t("الاقسام")}
             </NavLink> */}
             {/* <NavLink to="/chatbot" className="NavLink">
             {t("الدعم")}
             </NavLink> */}
-            <NavLink  className="NavLink" onClick={handleRemove}>{t("تسجيل خروج")}</NavLink>
+            {/* <NavLink  className="NavLink" onClick={handleRemove}>{t("تسجيل خروج")}</NavLink> */}
             {/* <DropdownButton
       id="dropdown-item-button"
       title={<img src={Img1} alt="Dropdown" className="dropdown-img" />}

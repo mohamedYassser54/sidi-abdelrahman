@@ -243,7 +243,7 @@ useEffect(() => {
                 <th>الفلوس</th>
                 <th>التقرير</th>
                 <th>التاريخ</th>
-                {/* <th>اخفاء</th> */}
+                <th>اخفاء</th>
               </tr>
             </thead>
             
@@ -274,7 +274,7 @@ useEffect(() => {
                 </td>
                 <td>{formatDate(item.date)}</td>
                 <td>
-                  {/* <Button onClick={() => handleHideReport(item.id)}>Hide</Button> */}
+                  <Button onClick={() => handleHideReport(item.id)}>Hide</Button>
                 </td>
               </tr>
             )

@@ -44,6 +44,14 @@ app.get('/',(re,res)=> {
     return res.json("From BAckend Side");
 });
 
+
+
+
+
+
+
+
+
 // login employee
 app.post("/loginemp", (req, res) => {
   const sql = "SELECT * FROM employees WHERE `username` = ? and password = ?";
@@ -194,6 +202,47 @@ app.delete("/removetest/:id",(req,res)=>{
       return res.json(data );
   })
 })
+
+
+
+app.post('/hideReport/:id', (req, res) => {
+  const { id } = req.params;
+  const { hidden } = req.body; // قيمة hidden ستكون 1
+
+  console.log('Received request to hide report:', { id, hidden });
+
+  if (!id) {
+    return res.status(400).send('Missing report ID');
+  }
+
+  // تحديث القيمة hidden في قاعدة البيانات
+  const query = 'UPDATE `sidi-abdelrahman` SET hidden = ? WHERE id = ?';
+
+  db.query(query, [hidden, id], (err, result) => {
+    if (err) {
+      console.error('Error updating report:', err);
+      return res.status(500).send('Failed to hide report');
+    }
+
+    if (result.affectedRows === 0) {
+      return res.status(404).send('Report not found');
+    }
+
+    console.log('Report hidden successfully:', id);
+    res.status(200).send('Report hidden successfully');
+  });
+});
+
+
+
+// app.get('/hiddenReports', async (req, res) => {
+//   try {
+//     const hiddenReports = await db.collection('services').find({ hidden: true }).toArray();
+//     res.json(hiddenReports.map(report => report.id));
+//   } catch (err) {
+//     res.status(500).send('Failed to fetch hidden reports');
+//   }
+// });
 
   
 

@@ -20,6 +20,8 @@ import './App.css';
 const Home = lazy(()=> import('./component/Home.js'))
 const Click = lazy(()=> import('./component/click.js'))
 const IT = lazy(()=> import('./component/it/Employee.js'))
+const ITP = lazy(()=> import('./component/it/testP.js'))
+const Client = lazy(()=> import('./component/client.js'))
 // const  Chatbot = lazy(()=> import('./component/chatbot/chat.js'))
 // const  Pages = lazy(()=> import('./component/page.js'))
 // const  Department = lazy(()=> import('./component/Department.js'))
@@ -44,6 +46,7 @@ const App = ()=>{
         <Route path="/SignupUser" element={<Signup/>}/>
         {/* <Route path="/" element={<Signin/>}/> */}
         <Route path="/signin" element={<Signin/>}/>
+        <Route path="/ITP" element={<ITP/>}/>
 
          <Route path="*" element={
           <div>
@@ -88,9 +91,21 @@ const App = ()=>{
           <Route path="/IT" element={
             <React.Suspense fallback={<Loading/>}>
             <div>
-          {/* <Navbars /> */}
+          <Navbars />
                     
            < IT />
+          
+          
+          {/* <Footer/> */}
+          </div>
+          </React.Suspense>
+        }/>
+          <Route path="/Client" element={
+            <React.Suspense fallback={<Loading/>}>
+            <div>
+          <Navbars />
+                    
+           < Client />
           
           
           {/* <Footer/> */}
