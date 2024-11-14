@@ -17,6 +17,11 @@ import Form from 'react-bootstrap/Form';
 const amiriFontUrl = '/fonts/Cairo-VariableFont_slnt,wght.ttf'; 
 
 const MyVerticallyCenteredModal = ({ show, onHide, doctorData }) => {
+
+  const [services, setServices] = useState([]); // لتخزين البيانات من API
+  const [searchTerm, setSearchTerm] = useState(''); // لتخزين النص المدخل في البحث
+
+
   
   const downloadReport = async () => {
     const pdfDoc = await PDFDocument.create();
@@ -115,6 +120,10 @@ const MyVerticallyCenteredModal = ({ show, onHide, doctorData }) => {
 };
 
 function Client() {
+  const [services, setServices] = useState([]); // لتخزين البيانات من API
+  const [searchTerm, setSearchTerm] = useState(''); // لتخزين النص المدخل في البحث
+
+
   const [data, setData] = useState([]);
   const [modalShow, setModalShow] = useState(false);
   const [selectedDoctorData, setSelectedDoctorData] = useState([]);
@@ -129,17 +138,24 @@ function Client() {
       .then(data => {
         if (Array.isArray(data)) {
           setData(data);
+          setServices(data);
+
         } else {
           console.error('Expected data to be an array, but got:', data);
         }
       })
       .catch(err => console.log(err));
 
-    const savedHiddenReports = localStorage.getItem('hiddenReports');
+    const savedHiddenReports = localStorage.getItem('hiddenReportss');
     if (savedHiddenReports) {
       setHiddenReports(JSON.parse(savedHiddenReports));
     }
   }, []);
+
+   // تصفية البيانات بناءً على البحث
+  //  const filteredServices = data.filter((service) =>
+  //   service.name.toLowerCase().includes(searchTerm.toLowerCase())
+  // );
 
   const groupDataByUsername = (data) => {
     if (!Array.isArray(data)) {
@@ -160,14 +176,14 @@ function Client() {
 
   const groupedData = groupDataByUsername(data);
 
-  const handleRemove = async (id) => {
-    try {
-      await axios.delete(`https://elfarida-server.vercel.app/removetest/${id}`);
-      window.location.reload();
-    } catch (err) {
-      console.error("Error deleting record:", err);
-    }
-  };
+  // const handleRemove = async (id) => {
+  //   try {
+  //     await axios.delete(`https://elfarida-server.vercel.app/removetest/${id}`);
+  //     window.location.reload();
+  //   } catch (err) {
+  //     console.error("Error deleting record:", err);
+  //   }
+  // };
 
   const handleShowReports = (reportId) => {
     const selectedReport = data.find(item => item.id === reportId);
@@ -180,17 +196,23 @@ function Client() {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
-  const handleHideReport = (id) => {
-    const updatedHiddenReports = [...hiddenReports, id];
-    setHiddenReports(updatedHiddenReports);
-    localStorage.setItem('hiddenReports', JSON.stringify(updatedHiddenReports));
-  };
+  // const handleHideReport = (id) => {
+  //   const updatedHiddenReports = [...hiddenReports, id];
+  //   setHiddenReports(updatedHiddenReports);
+  //   localStorage.setItem('hiddenReports', JSON.stringify(updatedHiddenReports));
+  // };
   const grandTotal = Object.keys(groupedData).reduce((total, name) => {
     const groupTotal = groupedData[name]
       .filter(item => !hiddenReports.includes(item.id)) 
       .reduce((sum, item) => sum + parseFloat(item.price), 0); 
     return total + groupTotal;
   }, 0);
+  // const TotalClient = Object.keys(groupedData).reduce((total, name) => {
+  //   const groupTotal = groupedData[name]
+  //     .filter(item => !hiddenReports.includes(item.id)) 
+  //     .reduce((sum, item) => sum + parseFloat(item.price), 0); 
+  //   return total + groupTotal;
+  // }, 0);
   return (
     <>
 
@@ -200,23 +222,27 @@ function Client() {
       </div> */}
       <div className={styleess.bodyenplo}>
         <div className={styleess.tablee}>
-          <h1 className={styleess.h1}>
-          El farida
-          <Form inline>
+          <div className={styleess.allsearch}>
+            <h1>El farida</h1>
+          
+          <Form inline className='Search'>
         <Row>
           <Col xs="auto">
             <Form.Control
               type="text"
               placeholder="Search"
-              className=" mr-sm-2"
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className=" mr-sm-2 "
             />
           </Col>
           <Col xs="auto">
-            <Button type="submit">Submit</Button>
+          {/* <Button type="submit" onClick={(e) => e.preventDefault()}>
+          Submit
+          </Button> */}
           </Col>
         </Row>
       </Form>
-          </h1>
+          </div>
           <table>
             <thead>
               <tr>
@@ -225,6 +251,7 @@ function Client() {
                 <th>الفلوس</th>
                 <th>التقرير</th>
                 <th>التاريخ</th>
+                {/* <th>تم دفع</th> */}
                 {/* <th>اخفاء</th> */}
               </tr>
             </thead>
@@ -238,29 +265,38 @@ function Client() {
       return (
         <React.Fragment key={name}>
           <tr>
-            <td colSpan="6">{name}</td>
+            {/* <td colSpan="6">{name}</td> */}
           </tr>
-          {groupedData[name].map(item => (
-            !hiddenReports.includes(item.id) && (
-              <tr key={item.id}>
-                <td>{item.id}</td>
-                <td>{item.name}</td>
-                <td>{item.price} LE</td>
-                <td>
-                  <Button 
-                      style={{ border: "none" }} 
-                      onClick={() => handleShowReports(item.id)}
-                  >
-                    Report
-                  </Button>
-                </td>
-                <td>{formatDate(item.date)}</td>
-                <td>
-                  {/* <Button onClick={() => handleHideReport(item.id)}>Hide</Button> */}
-                </td>
-              </tr>
-            )
-          ))}
+          {groupedData[name]
+  .filter((item) =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  )
+  .map((item) => 
+    !hiddenReports.includes(item.id) && (
+      <tr key={item.id}>
+        <td>{item.id}</td>
+        <td>{item.name}</td>
+        <td>{item.price} LE</td>
+        <td className='btnreport'>
+          <Button 
+            style={{ border: "none" }} 
+            onClick={() => handleShowReports(item.id)}
+          >
+            Report
+          </Button>
+        </td>
+        <td>{formatDate(item.date)}</td>
+        {/* <td>{item.price} LE</td> */}
+        <td>
+          {/* Uncomment the following button if needed */}
+          {/* <Button onClick={() => handleHideReport(item.id)}>Hide</Button> */}
+        </td>
+      </tr>
+    )
+  )
+}
+
+          
           {/* <tr>
             <td colSpan="2">Total Price for {name}:</td>
             <td>{totalPrice} LE</td>
@@ -270,11 +306,11 @@ function Client() {
       );
     })}
     {/* Render the grand total */}
-    <tr>
+    {/* <tr>
       <td colSpan="2"> Total Cost:</td>
       <td>{grandTotal} LE</td>
       <td colSpan="3"></td>
-    </tr>
+    </tr> */}
   </tbody>
           </table>
         </div>

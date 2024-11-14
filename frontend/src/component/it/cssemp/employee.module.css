@@ -49,9 +49,22 @@
     display: flex;
     justify-content: space-around;
 }
-
-
+.allsearch{
+    width: 100%;
+    padding: 5px;
+    background: #fff4;
+    color: #1e90ff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* font-size: 30px; */
+}
+.Search{
+    /* width: 50%;
+    display: flex; */
+}
 thead{
+   
     background: #1e90ff;
     color: #fff;
    
@@ -101,12 +114,22 @@ td h6{
 
 @media(max-width:601px){
     .tablee{
-        width: 95%;
+        width: 100%;
     }
     td{
         font-size: 15px;
     }
-    td button{
+    /* td button{
         margin: 1px;
+    } */
+    .allsearch{
+        width: 100%;
+        padding:10px;
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
+   
+    
 }
