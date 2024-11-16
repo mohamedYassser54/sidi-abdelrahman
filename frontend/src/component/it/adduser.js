@@ -31,11 +31,12 @@ function Employeetable() {
         console.log(res.data);
         if (res.data && res.data.Message === "User already exists") {
           alert("User already exists");
-         
           navigate('/Employeetable');
         } else {
           // navigate('/signin');
           alert("Data Inserted Successfully");
+         window.location.reload()
+
         }
       })
       .catch((err) => console.log(err));
