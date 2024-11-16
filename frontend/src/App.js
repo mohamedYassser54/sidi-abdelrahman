@@ -49,8 +49,24 @@ const App = ()=>{
         {/* <Route path="/" element={<Signin/>}/> */}
         <Route path="/signin" element={<Signin/>}/>
         <Route path="/ITP" element={<ITP/>}/>
-        <Route path="/adduser" element={<Adduser/>}/>
-        <Route path="/Employeetable" element={<Employeetable/>}/>
+        <Route path="/adduser" element={
+            <React.Suspense fallback={<Loading/>}>
+
+            <div>
+
+          <Adduser/>
+          </div>
+          </React.Suspense>
+          }
+          />
+        <Route path="/Employeetable" element={
+           <React.Suspense fallback={<Loading/>}>
+           <div>
+          <Employeetable/>
+          </div>
+          </React.Suspense>
+        }
+          />
 
          <Route path="*" element={
           <div>
