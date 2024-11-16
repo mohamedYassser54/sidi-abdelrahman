@@ -53,7 +53,7 @@ const App = ()=>{
             <React.Suspense fallback={<Loading/>}>
 
             <div>
-
+          <Navbars />
           <Adduser/>
           </div>
           </React.Suspense>
@@ -62,6 +62,7 @@ const App = ()=>{
         <Route path="/Employeetable" element={
            <React.Suspense fallback={<Loading/>}>
            <div>
+          <Navbars />
           <Employeetable/>
           </div>
           </React.Suspense>
