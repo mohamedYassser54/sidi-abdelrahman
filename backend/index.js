@@ -82,7 +82,7 @@ app.post("/loginemp", (req, res) => {
 
 // signup
 app.post('/signup', (req, res) => {
-    const checkIfExistsQuery = "SELECT * FROM login WHERE username = ?";
+    const checkIfExistsQuery = "SELECT * adduser login WHERE username = ?";
     
     db.query(checkIfExistsQuery, [req.body.username], (err, result) => {
       if (err) {
@@ -155,6 +155,29 @@ app.post("/loginDoctor", (req, res) => {
 
 
 
+app.post('/adduser',(req,res)=>{
+  const sql = "INSERT INTO adduser (`username`,`doctor`,`price`,time,number,week) VALUES (?)";
+  const values =[
+      req.body.username,
+      req.body.doctor,
+      req.body.price,
+      req.body.time,
+      req.body.number,
+      req.body.week,
+  ]
+  db.query(sql,[values],(err,result)=>{
+      if(err) return res.json({Message :"error in Node"})
+      return res.json(result);
+  })
+})  
+
+app.get('/getuser',(req,res)=>{
+  const sql = "SELECT *  FROM `adduser`";
+  db.query(sql,(err,data)=>{
+      if(err) return res.json(err);
+      return res.json(data);
+  })
+})
 
 
 
@@ -232,6 +255,35 @@ app.post('/hideReport/:id', (req, res) => {
     res.status(200).send('Report hidden successfully');
   });
 });
+
+
+
+app.post('/updateAttendance', async (req, res) => {
+  const { userId, attendance } = req.body;
+
+  if (userId === undefined || attendance === undefined) {
+    return res.status(400).send('Invalid request data');
+  }
+
+  try {
+    if (attendance) {
+      await db.query(
+        'UPDATE adduser SET attendance = 1, absence = 0 WHERE id = ?',
+        [userId]
+      );
+    } else {
+      await db.query(
+        'UPDATE adduser SET attendance = 0, absence = 1 WHERE id = ?',
+        [userId]
+      );
+    }
+    res.status(200).send('Attendance updated successfully');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error updating attendance');
+  }
+});
+
 
 
 

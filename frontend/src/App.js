@@ -22,6 +22,8 @@ const Click = lazy(()=> import('./component/click.js'))
 const IT = lazy(()=> import('./component/it/Employee.js'))
 const ITP = lazy(()=> import('./component/it/testP.js'))
 const Client = lazy(()=> import('./component/client.js'))
+const Adduser = lazy(()=> import('./component/it/adduser.js'))
+const Employeetable = lazy(()=> import('./component/it/Employeetable.js'))
 // const  Chatbot = lazy(()=> import('./component/chatbot/chat.js'))
 // const  Pages = lazy(()=> import('./component/page.js'))
 // const  Department = lazy(()=> import('./component/Department.js'))
@@ -47,6 +49,8 @@ const App = ()=>{
         {/* <Route path="/" element={<Signin/>}/> */}
         <Route path="/signin" element={<Signin/>}/>
         <Route path="/ITP" element={<ITP/>}/>
+        <Route path="/adduser" element={<Adduser/>}/>
+        <Route path="/Employeetable" element={<Employeetable/>}/>
 
          <Route path="*" element={
           <div>

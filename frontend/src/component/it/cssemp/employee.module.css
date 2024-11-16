@@ -85,7 +85,7 @@ tr{
 
 }
 tr button{
-    background: #500c7f;
+    /* background: #500c7f; */
     color: #fff;
     border: none;
     border-radius: 10px;
@@ -111,6 +111,25 @@ td h6{
     justify-content: center;
     text-align: center;
 }
+
+
+/* btnst */
+td .btnst{
+    /* padding: 10px; */
+    /* background: #0396ea; */
+    /* color: #000; */
+}
+
+
+.green {
+    background-color: #28a745; /* لون أخضر */
+    color: white;
+  }
+  
+  .red {
+    background-color: #dc3545; /* لون أحمر */
+    color: white;
+  }
 
 @media(max-width:601px){
     .tablee{
