@@ -337,7 +337,13 @@ const handleDayChange = (event) => {
         <td>{item.username}</td>
         <td>{item.doctor}</td>
         <td>{item.price} LE</td>
-        <td>{item.time} </td>
+        <td>
+  {new Date(`1970-01-01T${item.time}`).toLocaleTimeString([], { 
+    hour: '2-digit', 
+    minute: '2-digit', 
+    hour12: true 
+  })}
+</td>
         <td>{item.number} </td>
         <td>{item.week} </td>
         <td>
