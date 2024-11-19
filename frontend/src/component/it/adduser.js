@@ -71,6 +71,8 @@ function Employeetable() {
               <option value="مروه">مروه</option>
               <option value="رشا">رشا</option>
               <option value="صفا">صفا</option>
+              <option value="هاجر">هاجر</option>
+              <option value="هدي">هدي</option>
             </select>
           </div>
         </div>
