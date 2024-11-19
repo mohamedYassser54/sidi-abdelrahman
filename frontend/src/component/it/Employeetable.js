@@ -337,13 +337,32 @@ const handleDayChange = (event) => {
         <td>{item.username}</td>
         <td>{item.doctor}</td>
         <td>{item.price} LE</td>
-        <td>
-  {new Date(`1970-01-01T${item.time}`).toLocaleTimeString([], { 
-    hour: '2-digit', 
-    minute: '2-digit', 
-    hour12: true 
+        <td
+  style={{
+    color: (() => {
+      const itemTime = new Date(); 
+      const [hours, minutes] = item.time.split(':').map(Number); // استخراج الساعات والدقائق من `item.time`
+      itemTime.setHours(hours, minutes, 0, 0); // إعداد وقت الشخص
+
+      const currentTime = new Date(); // الوقت الحالي
+
+      // حساب الفرق بالدقائق
+      const diffInMinutes = (currentTime - itemTime) / 60000; 
+
+      // إذا كان الوقت الحالي ضمن الفترة (0 إلى 5 دقائق)
+      return diffInMinutes >= 0 && diffInMinutes <= 5 ? 'green' : 'black';
+    })()
+  }}
+>
+  {new Date(`1970-01-01T${item.time}`).toLocaleTimeString([], {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: true
   })}
 </td>
+
+
+
         <td>{item.number} </td>
         <td>{item.week} </td>
         <td>
