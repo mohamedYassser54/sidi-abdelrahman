@@ -14,6 +14,7 @@ function Employeetable() {
     time:"",
     number:"",
     week:"",
+    date:"",
   });
   const navigate = useNavigate();
 
@@ -61,6 +62,7 @@ function Employeetable() {
           <input type="text" placeholder="Price" name="price" required onChange={handleChange} />
           <input type="time" placeholder="time" name="time" required onChange={handleChange} />
           <input type="text" placeholder="Mobile number" id="numberma" name="number" required onChange={handleChange} />
+          <input type="date" placeholder="date"  name="date" required onChange={handleChange} />
         </div>
 
         <div className={styles.option}>

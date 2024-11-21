@@ -119,7 +119,7 @@ const MyVerticallyCenteredModal = ({ show, onHide, doctorData }) => {
   );
 };
 
-function Employeetable() {
+function Ittable() {
   const [services, setServices] = useState([]); // لتخزين البيانات من API
   const [searchTerm, setSearchTerm] = useState(''); // لتخزين النص المدخل في البحث
 
@@ -127,8 +127,6 @@ function Employeetable() {
   const [status, setStatus] = useState(null);
 
   const [selectedDay, setSelectedDay] = useState('');
-  
-  const [selectedDate, setSelectedDate] = useState("");
 
 
 
@@ -168,9 +166,7 @@ const handleDayChange = (event) => {
 };
 
 
-const handleDateChange = (e) => {
-  setSelectedDate(e.target.value);
-};
+
 
   useEffect(() => {
     fetch('https://elfarida-server.vercel.app/getuser')
@@ -284,17 +280,6 @@ const handleDateChange = (e) => {
         
       </Form>
 
-      <div>
-      <label htmlFor="date-picker">اختر التاريخ:</label>
-      <input
-        id="date-picker"
-        type="date"
-        value={selectedDate}
-        onChange={handleDateChange}
-      />
-      {selectedDate && <p>التاريخ المختار: {selectedDate}</p>}
-    </div>
-
       <div className={styleess.option}>
           <div className={styleess.selectbox}>
             <select className="option"
@@ -323,7 +308,6 @@ const handleDateChange = (e) => {
                 <th>الوقت</th>
                 <th>رقم الهاتف</th>
                 <th>اليوم</th>
-                <th>التاريخ</th>
                 <th>الحاله </th>
                 {/* <th>تم دفع</th> */}
                 {/* <th>اخفاء</th> */}
@@ -344,8 +328,7 @@ const handleDateChange = (e) => {
           {groupedData[name]
   .filter((item) =>
     item.username.toLowerCase().includes(searchTerm.toLowerCase()) && 
-     (selectedDay === '' || item.week === selectedDay)&&
-     (selectedDate === '' || item.date === selectedDate)
+     (selectedDay === '' || item.week === selectedDay)
   )
   .map((item) => 
     !hiddenReports.includes(item.id) && (
@@ -382,7 +365,6 @@ const handleDateChange = (e) => {
 
         <td>{item.number} </td>
         <td>{item.week} </td>
-        <td>{item.date} </td>
         <td>
   <button
     className={`${styleess.btnst} ${item.attendance === 1 ? styleess.green : ''}`}
@@ -447,4 +429,4 @@ const handleDateChange = (e) => {
   );
 }
 
-export default Employeetable;
+export default Ittable;

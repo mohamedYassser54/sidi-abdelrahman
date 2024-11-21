@@ -156,7 +156,7 @@ app.post("/loginDoctor", (req, res) => {
 
 
 app.post('/adduser',(req,res)=>{
-  const sql = "INSERT INTO adduser (`username`,`doctor`,`price`,time,number,week) VALUES (?)";
+  const sql = "INSERT INTO adduser (`username`,`doctor`,`price`,time,number,week,date) VALUES (?)";
   const values =[
       req.body.username,
       req.body.doctor,
@@ -164,6 +164,7 @@ app.post('/adduser',(req,res)=>{
       req.body.time,
       req.body.number,
       req.body.week,
+      req.body.date,
   ]
   db.query(sql,[values],(err,result)=>{
       if(err) return res.json({Message :"error in Node"})

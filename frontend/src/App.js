@@ -24,6 +24,7 @@ const ITP = lazy(()=> import('./component/it/testP.js'))
 const Client = lazy(()=> import('./component/client.js'))
 const Adduser = lazy(()=> import('./component/it/adduser.js'))
 const Employeetable = lazy(()=> import('./component/it/Employeetable.js'))
+const Ittable = lazy(()=> import('./component/it/ittable.js'))
 // const  Chatbot = lazy(()=> import('./component/chatbot/chat.js'))
 // const  Pages = lazy(()=> import('./component/page.js'))
 // const  Department = lazy(()=> import('./component/Department.js'))
@@ -48,7 +49,12 @@ const App = ()=>{
         <Route path="/SignupUser" element={<Signup/>}/>
         {/* <Route path="/" element={<Signin/>}/> */}
         <Route path="/signin" element={<Signin/>}/>
+
+        {/* private */}
         <Route path="/ITP" element={<ITP/>}/>
+        <Route path="/Ittable" element={<Ittable/>}/>
+        {/* private */}
+       
         <Route path="/adduser" element={
             <React.Suspense fallback={<Loading/>}>
 
