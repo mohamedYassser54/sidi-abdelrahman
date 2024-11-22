@@ -119,7 +119,7 @@ const MyVerticallyCenteredModal = ({ show, onHide, doctorData }) => {
   );
 };
 
-function Ittable() {
+function ItTable() {
   const [services, setServices] = useState([]); // لتخزين البيانات من API
   const [searchTerm, setSearchTerm] = useState(''); // لتخزين النص المدخل في البحث
 
@@ -127,6 +127,8 @@ function Ittable() {
   const [status, setStatus] = useState(null);
 
   const [selectedDay, setSelectedDay] = useState('');
+  
+  const [selectedDate, setSelectedDate] = useState("");
 
 
 
@@ -166,27 +168,26 @@ const handleDayChange = (event) => {
 };
 
 
+const handleDateChange = (e) => {
+  setSelectedDate(e.target.value);
+};
 
+const fetchData = async () => {
+  try {
+    const response = await fetch('https://elfarida-server.vercel.app/getuser');
+    const data = await response.json();
 
-  useEffect(() => {
-    fetch('https://elfarida-server.vercel.app/getuser')
-      .then(res => res.json())
-      .then(data => {
-        if (Array.isArray(data)) {
-          setData(data);
-          setServices(data);
-
-        } else {
-          console.error('Expected data to be an array, but got:', data);
-        }
-      })
-      .catch(err => console.log(err));
-
-    const savedHiddenReports = localStorage.getItem('hiddenReportss');
-    if (savedHiddenReports) {
-      setHiddenReports(JSON.parse(savedHiddenReports));
+    if (Array.isArray(data)) {
+      setData(data);
+      setServices(data);
+    } else {
+      console.error('Expected data to be an array, but got:', data);
     }
-  }, []);
+  } catch (error) {
+    console.error('Failed to fetch data:', error);
+  }
+};
+
 
    // تصفية البيانات بناءً على البحث
   //  const filteredServices = data.filter((service) =>
@@ -232,11 +233,44 @@ const handleDayChange = (event) => {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
-  // const handleHideReport = (id) => {
-  //   const updatedHiddenReports = [...hiddenReports, id];
-  //   setHiddenReports(updatedHiddenReports);
-  //   localStorage.setItem('hiddenReports', JSON.stringify(updatedHiddenReports));
-  // };
+  
+  const handleHideReport = async (id) => {
+    console.log('Attempting to hide report with ID:', id);
+  
+    try {
+      const response = await fetch(`https://elfarida-server.vercel.app/hideReportadduser/${id}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ hidden: 1 }),
+      });
+  
+      if (response.ok) {
+        console.log('Report hidden successfully');
+        setHiddenReports((prev) => [...prev, id]);
+        localStorage.setItem('hiddenReportss2', JSON.stringify([...hiddenReports, id]));
+        fetchData(); // Correctly defined function is now called
+      } else {
+        const errorText = await response.text();
+        console.error('Server error:', errorText);
+      }
+    } catch (error) {
+      console.error('Failed to hide report:', error);
+    }
+  };
+  
+
+  useEffect(() => {
+    const savedHiddenReports = localStorage.getItem('hiddenReportss2');
+    if (savedHiddenReports) {
+      setHiddenReports(JSON.parse(savedHiddenReports));
+    }
+  
+    fetchData(); // Correctly defined function is now called
+  }, []);
+  
+
   const grandTotal = Object.keys(groupedData).reduce((total, name) => {
     const groupTotal = groupedData[name]
       .filter(item => !hiddenReports.includes(item.id)) 
@@ -280,6 +314,17 @@ const handleDayChange = (event) => {
         
       </Form>
 
+      <div>
+      <label htmlFor="date-picker">اختر التاريخ:</label>
+      <input
+        id="date-picker"
+        type="date"
+        value={selectedDate}
+        onChange={handleDateChange}
+      />
+      {selectedDate && <p>التاريخ المختار: {selectedDate}</p>}
+    </div>
+
       <div className={styleess.option}>
           <div className={styleess.selectbox}>
             <select className="option"
@@ -308,9 +353,10 @@ const handleDayChange = (event) => {
                 <th>الوقت</th>
                 <th>رقم الهاتف</th>
                 <th>اليوم</th>
+                <th>التاريخ</th>
                 <th>الحاله </th>
                 {/* <th>تم دفع</th> */}
-                {/* <th>اخفاء</th> */}
+                <th>اخفاء</th>
               </tr>
             </thead>
             
@@ -328,7 +374,8 @@ const handleDayChange = (event) => {
           {groupedData[name]
   .filter((item) =>
     item.username.toLowerCase().includes(searchTerm.toLowerCase()) && 
-     (selectedDay === '' || item.week === selectedDay)
+     (selectedDay === '' || item.week === selectedDay)&&
+     (selectedDate === '' || item.date === selectedDate)
   )
   .map((item) => 
     !hiddenReports.includes(item.id) && (
@@ -365,6 +412,7 @@ const handleDayChange = (event) => {
 
         <td>{item.number} </td>
         <td>{item.week} </td>
+        <td>{item.date} </td>
         <td>
   <button
     className={`${styleess.btnst} ${item.attendance === 1 ? styleess.green : ''}`}
@@ -393,9 +441,8 @@ const handleDayChange = (event) => {
         {/* <td>{formatDate(item.date)}</td> */}
         {/* <td>{item.price} LE</td> */}
         <td>
-          {/* Uncomment the following button if needed */}
-          {/* <Button onClick={() => handleHideReport(item.id)}>Hide</Button> */}
-        </td>
+                  <Button onClick={() => handleHideReport(item.id)}>Hide</Button>
+                </td>
       </tr>
     )
   )
@@ -429,4 +476,4 @@ const handleDayChange = (event) => {
   );
 }
 
-export default Ittable;
+export default ItTable;

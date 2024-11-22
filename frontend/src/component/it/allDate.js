@@ -130,6 +130,9 @@ function AllDate() {
 
 
 
+  const [selectedDate, setSelectedDate] = useState("");
+
+
 
   const [data, setData] = useState([]);
   const [modalShow, setModalShow] = useState(false);
@@ -165,6 +168,10 @@ const handleDayChange = (event) => {
   setSelectedDay(event.target.value);
 };
 
+// اختيار التاريخ
+const handleDateChange = (e) => {
+  setSelectedDate(e.target.value);
+};
 
 
 
@@ -182,7 +189,7 @@ const handleDayChange = (event) => {
       })
       .catch(err => console.log(err));
 
-    const savedHiddenReports = localStorage.getItem('hiddenReportss');
+    const savedHiddenReports = localStorage.getItem('hiddenReportsss');
     if (savedHiddenReports) {
       setHiddenReports(JSON.parse(savedHiddenReports));
     }
@@ -280,6 +287,18 @@ const handleDayChange = (event) => {
         
       </Form>
 
+      <div>
+      <label htmlFor="date-picker">اختر التاريخ:</label>
+      <input
+        id="date-picker"
+        type="date"
+        value={selectedDate}
+        onChange={handleDateChange}
+      />
+      {selectedDate && <p>التاريخ المختار: {selectedDate}</p>}
+    </div>
+
+
       <div className={styleess.option}>
           <div className={styleess.selectbox}>
             <select className="option"
@@ -308,6 +327,7 @@ const handleDayChange = (event) => {
                 <th>الوقت</th>
                 <th>رقم الهاتف</th>
                 <th>اليوم</th>
+                <th>التاريخ</th>
                 <th>الحاله </th>
                 {/* <th>تم دفع</th> */}
                 {/* <th>اخفاء</th> */}
@@ -328,7 +348,9 @@ const handleDayChange = (event) => {
           {groupedData[name]
   .filter((item) =>
     item.username.toLowerCase().includes(searchTerm.toLowerCase()) && 
-     (selectedDay === '' || item.week === selectedDay)
+     (selectedDay === '' || item.week === selectedDay)&&
+     (selectedDate === '' || item.date === selectedDate)
+
   )
   .map((item) => 
     !hiddenReports.includes(item.id) && (
@@ -365,6 +387,8 @@ const handleDayChange = (event) => {
 
         <td>{item.number} </td>
         <td>{item.week} </td>
+        <td>{item.date} </td>
+
         <td>
   <button
     className={`${styleess.btnst} ${item.attendance === 1 ? styleess.green : ''}`}

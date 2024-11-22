@@ -35,7 +35,7 @@ const db = mysql.createPool({
 //   host: 'localhost',
 //   user: 'root',
 //   password: '',
-//   database: 'sidi-abdelrahman',
+//   database: 'sidi-abdelrahman2',
 // });
 
 
@@ -228,7 +228,7 @@ app.delete("/removetest/:id",(req,res)=>{
 })
 
 
-
+// sidi-abdelrahman
 app.post('/hideReport/:id', (req, res) => {
   const { id } = req.params;
   const { hidden } = req.body; // قيمة hidden ستكون 1
@@ -256,6 +256,39 @@ app.post('/hideReport/:id', (req, res) => {
     res.status(200).send('Report hidden successfully');
   });
 });
+
+
+
+
+// add user
+app.post('/hideReportadduser/:id', (req, res) => {
+  const { id } = req.params;
+  const { hidden } = req.body; // قيمة hidden ستكون 1
+
+  console.log('Received request to hide report:', { id, hidden });
+
+  if (!id) {
+    return res.status(400).send('Missing report ID');
+  }
+
+  // تحديث القيمة hidden في قاعدة البيانات
+  const query = 'UPDATE `adduser` SET hidden = ? WHERE id = ?';
+
+  db.query(query, [hidden, id], (err, result) => {
+    if (err) {
+      console.error('Error updating report:', err);
+      return res.status(500).send('Failed to hide report');
+    }
+
+    if (result.affectedRows === 0) {
+      return res.status(404).send('Report not found');
+    }
+
+    console.log('Report hidden successfully:', id);
+    res.status(200).send('Report hidden successfully');
+  });
+});
+
 
 
 

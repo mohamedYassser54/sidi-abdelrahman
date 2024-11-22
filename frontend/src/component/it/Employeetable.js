@@ -186,7 +186,7 @@ const handleDateChange = (e) => {
       })
       .catch(err => console.log(err));
 
-    const savedHiddenReports = localStorage.getItem('hiddenReportss');
+    const savedHiddenReports = localStorage.getItem('hiddenReportss2');
     if (savedHiddenReports) {
       setHiddenReports(JSON.parse(savedHiddenReports));
     }

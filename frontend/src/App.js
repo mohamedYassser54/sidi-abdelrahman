@@ -25,6 +25,7 @@ const Client = lazy(()=> import('./component/client.js'))
 const Adduser = lazy(()=> import('./component/it/adduser.js'))
 const Employeetable = lazy(()=> import('./component/it/Employeetable.js'))
 const Ittable = lazy(()=> import('./component/it/ittable.js'))
+const Alldata = lazy(()=> import('./component/it/allDate.js'))
 // const  Chatbot = lazy(()=> import('./component/chatbot/chat.js'))
 // const  Pages = lazy(()=> import('./component/page.js'))
 // const  Department = lazy(()=> import('./component/Department.js'))
@@ -61,6 +62,16 @@ const App = ()=>{
             <div>
           <Navbars />
           <Adduser/>
+          </div>
+          </React.Suspense>
+          }
+          />
+        <Route path="/Alldata" element={
+            <React.Suspense fallback={<Loading/>}>
+
+            <div>
+          <Navbars />
+          <Alldata/>
           </div>
           </React.Suspense>
           }
