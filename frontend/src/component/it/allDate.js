@@ -392,13 +392,11 @@ const handleDateChange = (e) => {
         <td>
   <button
     className={`${styleess.btnst} ${item.attendance === 1 ? styleess.green : ''}`}
-    onClick={() => updateStatus(item.id, true)}
   >
     تم الحضور
   </button>
   <button
     className={`${styleess.btnst} ${item.absence === 1 ? styleess.red : ''}`}
-    onClick={() => updateStatus(item.id, false)}
   >
     معتذر
   </button>
