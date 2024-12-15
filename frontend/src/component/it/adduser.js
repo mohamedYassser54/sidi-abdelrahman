@@ -72,7 +72,7 @@ function Employeetable() {
               <option value="احمد">احمد</option>
               <option value="مروه">مروه</option>
               <option value="رشا">رشا</option>
-              <option value="صفا">صفا</option>
+              <option value="سلمي">سلمي</option>
               <option value="هاجر">هاجر</option>
               <option value="هدي">هدي</option>
             </select>
